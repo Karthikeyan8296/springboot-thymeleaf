@@ -1,0 +1,5 @@
+<form th:action="@{/multi-step/step1}" th:object="${user}" method="post">
+  Name: <input type="text" th:field="*{name}" /><br />
+  Email: <input type="email" th:field="*{email}" /><br />
+  <button type="submit">Next</button>
+</form>

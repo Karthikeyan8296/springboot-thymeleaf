@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>User Form</title>
+    <script>
+      function addAddressFields() {
+        const container = document.getElementById("address-container");
+
+        const index = container.children.length;
+        const newFields = `
+                <div>
+                    <label>City:</label>
+                    <input type="text" name="addresses[${index}].city" /><br/>
+                    <label>State:</label>
+                    <input type="text" name="addresses[${index}].state" /><br/><br/>
+                </div>
+            `;
+        container.insertAdjacentHTML("beforeend", newFields);
+      }
+
+      function addPhoneField() {
+        const container = document.getElementById("phone-container");
+        const index = container.children.length;
+        const newField = `
+                <div>
+                    <label>Phone:</label>
+                    <input type="text" name="phones[${index}]" /><br/>
+                </div>
+            `;
+        container.insertAdjacentHTML("beforeend", newField);
+      }
+    </script>
+  </head>
+  <body>
+    <h2>User Form</h2>
+
+    <form action="/submit" method="post">
+      Name: <input type="text" name="name" /><br />
+      Email: <input type="email" name="email" /><br /><br />
+
+      <div id="address-container">
+        <div>
+          <label>City:</label>
+          <input type="text" name="addresses[0].city" /><br />
+          <label>State:</label>
+          <input type="text" name="addresses[0].state" /><br /><br />
+        </div>
+      </div>
+      <button type="button" onclick="addAddressFields()">Add Address</button
+      ><br /><br />
+
+      <div id="phone-container">
+        <div>
+          <label>Phone:</label>
+          <input type="text" name="phones[0]" /><br />
+        </div>
+      </div>
+      <button type="button" onclick="addPhoneField()">Add Phone</button
+      ><br /><br />
+
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>

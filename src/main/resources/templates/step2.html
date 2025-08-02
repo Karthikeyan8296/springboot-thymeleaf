@@ -1,0 +1,6 @@
+<form th:action="@{/multi-step/step2}" th:object="${user}" method="post">
+  Address: <input type="text" th:field="*{address}" /><br />
+  City: <input type="text" th:field="*{city}" /><br />
+  <a th:href="@{/multi-step/step1}">Back</a>
+  <button type="submit">Next</button>
+</form>
